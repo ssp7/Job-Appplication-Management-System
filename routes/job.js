@@ -9,17 +9,6 @@ const Jobs = require("../models/Job");
 // @access public
 router.get("/", async (req, res) => {
   try {
-    const jobName = "Software Developer";
-    const questionsForJob = await QA.find({ jobName: jobName });
-    const job1 = new Jobs({
-      jobName: jobName,
-      QA: questionsForJob,
-    });
-    await job1.save();
-    const job2 = new Jobs({
-      jobName: "Human Resources",
-    });
-    await job2.save();
     const jobs = await Jobs.find();
     res.json(jobs);
   } catch (err) {
