@@ -4,14 +4,10 @@ import AuthContext from "../../context/auth/authContext";
 
 const User = () => {
   const authContext = useContext(AuthContext);
-  const { user, loading, loadUser } = authContext;
-  useEffect(() => {
-    loadUser();
-    //eslint-disable-next-line
-  }, []);
+  const { user, jobs } = authContext;
   return (
     <Fragment>
-      <UserItem user={user} />
+      <UserItem user={user} jobs={jobs} />
     </Fragment>
   );
 };

@@ -1,4 +1,6 @@
 export const GET_JOBS = "GET_JOBS";
+export const GET_USERJOBS = "GET_USERJOBS";
+export const GET_QUESTIONS = "GET_QUESTIONS";
 export const JOBS_ERROR = "JOBS_ERROR";
 export const CLEAR_JOBS = "CLEAR_JOBS";
 export const FILTER_JOBS = "FILTER_JOBS";

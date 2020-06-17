@@ -7,6 +7,8 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERRORS,
+  GET_QUESTIONS,
+  GET_USERJOBS,
 } from "../Types";
 
 export default (state, action) => {
@@ -17,6 +19,27 @@ export default (state, action) => {
         isAuthenticated: true,
         loading: false,
         user: action.payload,
+      };
+    case GET_USERJOBS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        jobs: action.payload,
+      };
+    case GET_QUESTIONS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        questions: action.payload,
+      };
+    case GET_QUESTIONS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        questions: action.payload,
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:

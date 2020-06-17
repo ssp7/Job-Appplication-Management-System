@@ -7,8 +7,9 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
-  JOBS_LOADED,
+  GET_USERJOBS,
   AUTH_ERROR,
+  GET_QUESTIONS,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
@@ -20,7 +21,8 @@ const AuthState = (props) => {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     user: {},
-    job: [],
+    jobs: [],
+    questions: [],
     loading: true,
     error: null,
   };
@@ -45,22 +47,41 @@ const AuthState = (props) => {
     }
   };
 
-  // const loadJobs = async  => {
-  //   if (localStorage.token) {
-  //     setAuthToken(localStorage.token);
-  //   }
-  //   try {
-  //     const res = await axios.get("/api/auth");
-  //     dispatch({
-  //       type: JOBS_LOADED,
-  //       payload: res.data,
-  //     });
-  //   } catch (err) {
-  //     dispatch({
-  //       type: AUTH_ERROR,
-  //     });
-  //   }
-  // }
+  const getCurrentQuestions = async (formData) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.get("/api/questions", formData, config);
+      dispatch({
+        type: GET_QUESTIONS,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: AUTH_ERROR,
+      });
+    }
+  };
+
+  const loadUserJobs = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    try {
+      const res = await axios.get("/api/getUserJobs");
+      dispatch({
+        type: GET_USERJOBS,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: AUTH_ERROR,
+      });
+    }
+  };
 
   // Register User
   const register = async (formData) => {
@@ -71,7 +92,6 @@ const AuthState = (props) => {
     };
     try {
       const res = await axios.post("/api/users", formData, config);
-      console.log(res.data);
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data,
@@ -122,10 +142,14 @@ const AuthState = (props) => {
         token: state.token,
         isAuthenticated: state.token,
         user: state.user,
+        jobs: state.jobs,
+        questions: state.questions,
         loading: state.token,
         error: state.token,
         register,
         loadUser,
+        loadUserJobs,
+        getCurrentQuestions,
         login,
         logout,
         clearErrors,

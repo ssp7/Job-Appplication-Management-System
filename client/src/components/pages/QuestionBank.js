@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
-import User from "../user/User";
+import Questions from "../user/Questions";
 import AuthContext from "../../context/auth/authContext";
-const Account = () => {
+const QuestionBank = (props) => {
   const authContext = useContext(AuthContext);
   const { loadUser, loadUserJobs } = authContext;
   useEffect(() => {
@@ -11,9 +11,9 @@ const Account = () => {
   }, []);
   return (
     <div>
-      <User />
+      <Questions jobName={props.location.job} />
     </div>
   );
 };
 
-export default Account;
+export default QuestionBank;

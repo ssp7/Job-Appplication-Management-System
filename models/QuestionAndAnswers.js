@@ -28,8 +28,13 @@ const QuestionAndAnswerSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  givenAnswer: {
+    type: String,
+    required: false,
+  },
   correct: {
     type: Boolean,
+    required: false,
   },
 });
 

@@ -6,12 +6,17 @@ const JobSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
-  QA: [
+  questions: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "QA",
+      ref: "QuestionAndAnswers",
     },
   ],
+  progress: {
+    type: Number,
+    require: true,
+    default: 0,
+  },
   date: {
     type: Date,
     default: Date.now,
