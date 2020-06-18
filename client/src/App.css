@@ -467,10 +467,10 @@ body {
   background: #070707; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #2c3e50,
-    #bdc3c7
+    #ffffff,
+    #ffffff
   ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #ffffff, #bdc3c7);
+  background: linear-gradient(to right, #ffffff, #ffffff);
 }
 
 .result {
@@ -478,7 +478,7 @@ body {
 }
 
 .options {
-  text-decoration-color: rgba(170, 140, 140, 0.267);
+  text-decoration-color: rgb(255, 255, 255);
   cursor: pointer;
   border: 2px solid rgb(10, 2, 32);
   padding: 10px;
