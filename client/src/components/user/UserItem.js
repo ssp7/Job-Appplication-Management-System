@@ -13,13 +13,13 @@ const UserItem = ({ user, jobs }) => {
         <strong>
           <span className="text-primary">Name </span>
         </strong>
-        {name}
+        <strong>{name}</strong>
       </p>
       <p>
         <strong>
           <span className="text-primary">email </span>
         </strong>{" "}
-        {email}
+        <strong>{email}</strong>
       </p>
       <p>
         <strong>

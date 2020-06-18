@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { quizData } from "./quizData";
 
 export class Questions extends Component {
@@ -90,16 +91,29 @@ export class Questions extends Component {
     if (isEnd) {
       return (
         <div className="result">
-          <h3>Game Over your Final score is {this.state.score} points </h3>
+          <h2>
+            Game Over your Final score is {this.state.score} points out of{" "}
+            {quizData.length}{" "}
+          </h2>
+          <br />
           <div>
-            The correct answer's for the questions was
+            <strong>
+              The correct answers for the questions were.{" "}
+              <span className="text-primary">Sorry! we cannot hire you!</span>
+            </strong>
+
             <ul>
+              <br />
               {quizData.map((item, index) => (
                 <li className="ui floating message options" key={index}>
                   {item.answer}
                 </li>
               ))}
             </ul>
+            <br />
+            <Link to="/account" className="btn btn-primary">
+              Back to Account
+            </Link>
           </div>
         </div>
       );
