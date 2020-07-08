@@ -11,16 +11,16 @@ const Job = require("../models/Job");
 // @access private
 
 router.get(
-  "/",
+  "/:job",
   [auth, [check("job", "Job is required").not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { job } = req.body;
+    const { job } = req.params.job;
     try {
-      const questions = await QA.find({ jobName: job });
+      const questions = await QA.find({ job });
       res.json(questions);
     } catch (err) {
       console.error(err.message);

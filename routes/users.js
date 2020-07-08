@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
+const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
 const config = require("config");
 const jwt = require("jsonwebtoken");
@@ -76,5 +77,32 @@ router.post(
     }
   }
 );
+
+router.put("/:id", auth, async (req, res) => {
+  const { name, email, job, progress } = req.body;
+
+  const userFields = {};
+
+  if (name) userFields.name = name;
+  if (email) userFields.email = email;
+  if (job) userFields.phone = job;
+  if (progress) userFields.progress = progress;
+
+  try {
+    let user = await User.findById(req.params.id);
+    if (!user) return res.status(401).json({ msg: "User not found" });
+
+    //Making sure user owns that contact
+    user = await User.findByIdAndUpdate(
+      req.params.id,
+      { $set: userFields },
+      { new: true }
+    );
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 module.exports = router;

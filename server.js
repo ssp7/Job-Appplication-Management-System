@@ -15,6 +15,10 @@ app.get("/", (req, res) => res.json({ msg: "Welcome to the Job Portal" }));
 
 // Defining the routes
 app.use("/api/users", require("./routes/users"));
+app.use("/api/admin", require("./routes/admin"));
+app.use("/api/adminAuth", require("./routes/adminAuth"));
+app.use("/api/table", require("./routes/table"));
+app.use("/api/adminStats", require("./routes/getAdminStats"));
 app.use("/api/getUserJobs", require("./routes/getUserJobs"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/job", require("./routes/job"));

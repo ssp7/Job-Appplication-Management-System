@@ -15,26 +15,23 @@ const Register = (props) => {
     email: "",
     password: "",
     password2: "",
-    job: null,
+    jobName: props.location.AppliedJob,
   });
-
-  const { name, email, password, password2, job } = user;
+  const { name, email, password, password2, jobName } = user;
 
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push("/account");
     }
     if (error === "User already exists") {
-      setAlert(error, "danger");
+      setAlert("User already exists", "danger");
       clearErrors();
     }
     //eslint-disable-next-line
   }, [error, isAuthenticated, props.history]);
 
   const onChange = (e) => {
-    if (e.target.name !== job) {
-      setUser({ ...user, [e.target.name]: e.target.value });
-    }
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
@@ -44,13 +41,11 @@ const Register = (props) => {
     } else if (password !== password2) {
       setAlert("Passwords do not match", "danger");
     } else {
-      filterJobs("Software Developer");
-      console.log(filtered);
       register({
         name,
         email,
         password,
-        job: filtered,
+        jobName,
       });
     }
   };
@@ -97,17 +92,6 @@ const Register = (props) => {
             type="password"
             name="password2"
             value={password2}
-            onChange={onChange}
-            required
-            minLength="6"
-          />
-        </div>
-        <div className="from-group">
-          <label htmlFor="job">Enter the Job Name</label>
-          <input
-            type="text"
-            name="job"
-            value={job}
             onChange={onChange}
             required
             minLength="6"

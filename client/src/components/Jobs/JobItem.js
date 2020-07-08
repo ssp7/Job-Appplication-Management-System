@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const JobItem = ({ job }) => {
-  const { id, jobName } = job;
+  const { _id, jobName } = job;
 
   return (
     <div className="card bg-light">
@@ -13,9 +13,7 @@ const JobItem = ({ job }) => {
             className="btn btn-success btn-sm"
             to={{
               pathname: "/register",
-              AppliedJob: {
-                jobName: job,
-              },
+              AppliedJob: jobName,
             }}
           >
             Apply

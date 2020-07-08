@@ -8,6 +8,7 @@ export class Questions extends Component {
     myAnswer: null,
     options: [],
     score: 0,
+    type: "",
     disabled: true,
     isEnd: false,
   };
@@ -17,6 +18,7 @@ export class Questions extends Component {
     this.setState(() => {
       return {
         questions: quizData[this.state.currentQuestion].question,
+        type: quizData[this.state.currentQuestion].type,
         answer: quizData[this.state.currentQuestion].answer,
         options: quizData[this.state.currentQuestion].options,
       };
@@ -64,6 +66,7 @@ export class Questions extends Component {
         return {
           disabled: true,
           questions: quizData[this.state.currentQuestion].question,
+          type: quizData[this.state.currentQuestion].type,
           options: quizData[this.state.currentQuestion].options,
           answer: quizData[this.state.currentQuestion].answer,
         };
@@ -86,7 +89,7 @@ export class Questions extends Component {
     }
   };
   render() {
-    const { options, myAnswer, currentQuestion, isEnd } = this.state;
+    const { options, myAnswer, currentQuestion, isEnd, type } = this.state;
     let previousAnswer = myAnswer;
     if (isEnd) {
       return (
@@ -111,7 +114,10 @@ export class Questions extends Component {
               ))}
             </ul>
             <br />
-            <Link to="/account" className="btn btn-primary">
+            <Link
+              to={{ pathname: "/account", progress: quizData.length }}
+              className="btn btn-primary"
+            >
               Back to Account
             </Link>
           </div>
@@ -130,27 +136,73 @@ export class Questions extends Component {
           </strong>
           <br />
           <br />
-
-          {options.map((option) => (
-            <strong>
-              <p
-                key={option.id}
-                className={`ui floating message options ${
-                  myAnswer === option ? "selected" : null
-                }`}
-                onClick={() => this.checkAnswer(option)}
-                style={{ color: "black" }}
-              >
-                {myAnswer === option ? (
-                  <h4 style={{ color: "white" }}>{option}</h4>
-                ) : (
-                  <h4 style={{ color: "black" }}>{option}</h4>
-                )}
-              </p>
+          {type === "dropdown" && (
+            <div className="dropdown">
+              <button className="btn btn-dark">Dropdown Options</button>
+              <div className="dropdown-content">
+                {options.map((option) => (
+                  <div onClick={() => this.checkAnswer(option)}>
+                    {myAnswer === option ? (
+                      <h4
+                        style={{
+                          backgroundColor: "text-primary",
+                          color: "white",
+                        }}
+                      >
+                        {option}
+                      </h4>
+                    ) : (
+                      <h4 style={{ backgroundColor: "black" }}>{option}</h4>
+                    )}
+                  </div>
+                ))}
+              </div>
+              {(myAnswer === "pizza" ||
+                myAnswer === "burger" ||
+                myAnswer === "Indian Food") && (
+                <div>
+                  <strong>
+                    <h4 style={{ color: "black" }}>You selected </h4>
+                    <strong>
+                      <span className="text-primary">{myAnswer}</span>
+                    </strong>
+                  </strong>
+                </div>
+              )}
               <br />
-            </strong>
-          ))}
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+            </div>
+          )}
+
+          {type === "mcq" &&
+            options.map((option) => (
+              <strong>
+                <p
+                  key={option.id}
+                  className={`ui floating message options ${
+                    myAnswer === option ? "selected" : null
+                  }`}
+                  onClick={() => this.checkAnswer(option)}
+                  style={{ color: "black" }}
+                >
+                  {myAnswer === option ? (
+                    <h4 style={{ color: "white" }}>{option}</h4>
+                  ) : (
+                    <h4 style={{ color: "black" }}>{option}</h4>
+                  )}
+                </p>
+                <br />
+              </strong>
+            ))}
           <br />
+
           {currentQuestion < quizData.length - 1 && currentQuestion !== null && (
             <button
               className="btn btn-primary"
@@ -172,6 +224,14 @@ export class Questions extends Component {
               Next
             </button>
           )}
+          {
+            <Link
+              to={{ pathname: "/account", Progress: currentQuestion }}
+              className="btn btn-primary"
+            >
+              Back to Account
+            </Link>
+          }
           {/* //adding a finish button */}
           {currentQuestion === quizData.length - 1 && (
             <button
