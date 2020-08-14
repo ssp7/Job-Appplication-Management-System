@@ -1,6 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import { I18nProvider, LOCALES} from "./i18n";
+import translate from "./i18n/translate";
 import Navbar from "./components/layouts/Navbar";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
@@ -17,13 +19,20 @@ import Alerts from "./components/layouts/Alerts";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 const App = () => {
+  const [locale, setLocale] = useState(LOCALES.ENGLISH);
   return (
+    <I18nProvider locale={locale}>
     <AuthState>
       <JobsState>
         <AlertState>
           <Router>
             <Fragment className="App">
-              <Navbar />
+              <Navbar title={translate('Job Portal')}/>
+              <div style={{textAlign:"center"}}>
+              <button className="btn btn-primary btn-sm" onClick={()=> setLocale(LOCALES.ENGLISH)}>English</button>
+              <button className="btn btn-primary btn-sm" onClick={()=> setLocale(LOCALES.FRENCH)}>French</button>
+              <button className="btn btn-primary btn-sm" onClick={()=> setLocale(LOCALES.HINDI)}>Hindi</button>
+              </div>
               <div className="container">
                 <Alerts />
                 <Switch>
@@ -50,6 +59,7 @@ const App = () => {
         </AlertState>
       </JobsState>
     </AuthState>
+    </I18nProvider>
   );
 };
 

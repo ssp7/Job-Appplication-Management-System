@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
 import JobsContext from "../../context/Jobs/jobsContext";
+import translate from "../../i18n/translate";
 
 const Register = (props) => {
   const alertContext = useContext(AlertContext);
@@ -23,7 +24,7 @@ const Register = (props) => {
     if (isAuthenticated) {
       props.history.push("/account");
     }
-    if (error === "User already exists") {
+    if (error == "User already exists") {
       setAlert("User already exists", "danger");
       clearErrors();
     }
@@ -52,11 +53,11 @@ const Register = (props) => {
   return (
     <div className="form-container">
       <h1>
-        Account <span className="text-primary">Register</span>
+        {translate("Account")} <span className="text-primary">{translate("Register")}</span>
       </h1>
       <form onSubmit={onSubmit}>
         <div className="from-group">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">{translate("Name")}</label>
           <input
             type="text"
             name="name"
@@ -66,7 +67,7 @@ const Register = (props) => {
           />
         </div>
         <div className="from-group">
-          <label htmlFor="email">Email Address</label>
+          <label htmlFor="email">{translate("Email Address")}</label>
           <input
             type="email"
             name="email"
@@ -76,7 +77,7 @@ const Register = (props) => {
           />
         </div>
         <div className="from-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{translate("Password")}</label>
           <input
             type="password"
             name="password"
@@ -87,7 +88,7 @@ const Register = (props) => {
           />
         </div>
         <div className="from-group">
-          <label htmlFor="password2">Confirm Password</label>
+          <label htmlFor="password2">{translate("Confirm Password")}</label>
           <input
             type="password"
             name="password2"

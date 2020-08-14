@@ -1,28 +1,30 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { I18nProvider, LOCALES} from "../../i18n";
 import AuthContext from "../../context/auth/authContext";
+import translate from "../../i18n/translate";
 
 const Navbar = ({ title, icon }) => {
   const authContext = useContext(AuthContext);
 
   const { isAuthenticated, logout, user, admin } = authContext;
-
+  const [locale, setLocale] = useState(LOCALES.ENGLISH); 
   const onLogout = () => {
     logout();
   };
   const authLinks = (
     <Fragment>
-      <li>Hello {(user && user.name) || (admin && admin.name)}</li>
+      <li>{translate('Hello')} {(user && user.name) || (admin && admin.name)}</li>
       <li>
         <a onClick={onLogout} href="/">
           <i className="fas fa-sign-out-alt"></i>{" "}
-          <span className="hide-sm">Logout</span>
+          <span className="hide-sm">{translate('Logout')}</span>
         </a>
       </li>
       {user && (
         <li>
-          <Link to="/account">Profile</Link>
+          <Link to="/account">{translate('Profile')}</Link>
         </li>
       )}
     </Fragment>
@@ -30,13 +32,13 @@ const Navbar = ({ title, icon }) => {
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to="/">Jobs</Link>
+        <Link to="/">{translate('Jobs')}</Link>
       </li>
       <li>
-        <Link to="/login">Login</Link>
+        <Link to="/login">{translate('Login')}</Link>
       </li>
       <li>
-        <Link to="/adminLogin">AdminLogin</Link>
+        <Link to="/adminLogin">{translate('AdminLogin')}</Link>
       </li>
     </Fragment>
   );
@@ -58,7 +60,7 @@ Navbar.protoTypes = {
 };
 
 Navbar.defaultProps = {
-  title: "Job Portal",
+  title: `Job Portal`,
   icon: "fas fa-briefcase",
 };
 

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
+import translate from "../../i18n/translate";
 const AdminLogin = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
@@ -37,12 +38,12 @@ const AdminLogin = (props) => {
   return (
     <div className="form-container">
       <h1>
-        <span className="text-primary">Admin</span> Account{" "}
+  <span className="text-primary">{translate('Admin')}</span> {translate('Account')}{" "}
         <span className="text-primary">Login</span>
       </h1>
       <form onSubmit={onSubmit}>
         <div className="from-group">
-          <label htmlFor="email">Email Address</label>
+          <label htmlFor="email">{translate('Email Address')}</label>
           <input
             type="email"
             name="email"
@@ -52,7 +53,7 @@ const AdminLogin = (props) => {
           />
         </div>
         <div className="from-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{translate('Password')}</label>
           <input
             type="password"
             name="password"

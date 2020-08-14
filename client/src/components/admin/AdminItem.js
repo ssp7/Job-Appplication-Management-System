@@ -26,8 +26,8 @@ const AdminItem = ({ admin, adminStats, table }) => {
       <h2>Statistics For Applicants</h2>
       <div className="w3-table w3-bordered w3-striped w3-border test w3-hoverable">
         <p>
-          <table className="w3-tables">
-            <tr style={{ backgroundColor: "#4CAF50!important" }}>
+          <table className="w3-table w3-striped w3-bordered">
+            <tr style={{backgroundColor:"primary"}}>
               <th>Job Title</th>
               <th>No. of Applicants</th>
             </tr>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import translate from "../../i18n/translate";
 
 const JobItem = ({ job }) => {
   const { _id, jobName } = job;
@@ -16,7 +17,7 @@ const JobItem = ({ job }) => {
               AppliedJob: jobName,
             }}
           >
-            Apply
+            {translate('Apply')}
           </Link>
         </span>
       </h3>

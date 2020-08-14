@@ -67,7 +67,7 @@ export default (state, action) => {
         ...state,
         isAuthenticated: true,
         loading: false,
-        table: action.payload,
+        adminTable: action.payload,
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:

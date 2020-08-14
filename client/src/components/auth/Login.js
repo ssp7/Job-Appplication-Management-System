@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
+import translate from "../../i18n/translate";
 const Login = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
@@ -16,7 +17,7 @@ const Login = (props) => {
     if (isAuthenticated) {
       props.history.push("/account");
     }
-    if (error === "Invalid Credentials") {
+    if (error == "Invalid Credentials") {
       setAlert(error, "danger");
       clearErrors();
     }
@@ -36,11 +37,11 @@ const Login = (props) => {
   return (
     <div className="form-container">
       <h1>
-        Account <span className="text-primary">Login</span>
+        {translate('Account')} <span className="text-primary">{translate('Login')}</span>
       </h1>
       <form onSubmit={onSubmit}>
         <div className="from-group">
-          <label htmlFor="email">Email Address</label>
+          <label htmlFor="email">{translate("Email Address")}</label>
           <input
             type="email"
             name="email"
@@ -50,7 +51,7 @@ const Login = (props) => {
           />
         </div>
         <div className="from-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{translate('Password')}</label>
           <input
             type="password"
             name="password"
@@ -61,7 +62,7 @@ const Login = (props) => {
         </div>
         <input
           type="submit"
-          value="Login"
+          value="login"
           className="btn btn-primary btn-block"
         />
       </form>
