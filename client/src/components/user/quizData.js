@@ -32,4 +32,11 @@ export const quizData = [
     options: [`pizza`, `burger`, `Indian Food`],
     answer: `Indian Food`,
   },
+  {
+    id:5,
+    question: "Which of these are Programming Languages",
+    type: "checkbox",
+    options: [`Grails`, `React`, `Groovy`, `Java-Script`],
+    answer: [`Groovy`, `Java-Script`],
+  }
 ];

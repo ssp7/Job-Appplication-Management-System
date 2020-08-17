@@ -5,7 +5,7 @@ import { quizData } from "./quizData";
 export class Questions extends Component {
   state = {
     currentQuestion: 0,
-    myAnswer: null,
+    myAnswer: [],
     options: [],
     score: 0,
     type: "",
@@ -109,7 +109,7 @@ export class Questions extends Component {
               <br />
               {quizData.map((item, index) => (
                 <li className="ui floating message options" key={index}>
-                  {item.answer}
+                  {item.answer}{" "}
                 </li>
               ))}
             </ul>
@@ -132,10 +132,25 @@ export class Questions extends Component {
             {" "}
             <span style={{ color: "#001799" }}>{`Questions ${
               currentQuestion + 1
-            }  out of ${quizData.length} remaining `}</span>
+            }  out of ${quizData.length}`}</span>
           </strong>
           <br />
           <br />
+          {type === "checkbox" && (
+            <div>
+              <h4 style={{color:"black", fontWeight:"30px"}}>Select all that applies</h4>
+              {
+                options.map((option) => (
+                  <div onClick={(option) => this.checkAnswer(option)}>
+                   <label class="checkbox-container" style={{color:"black"}}>{option}
+                   <input type="checkbox" />
+                   <span class="checkmark"></span>
+                  </label>
+                  </div>
+                ))
+              }
+            </div>
+          )}
           {type === "dropdown" && (
             <div className="dropdown">
               <button className="btn btn-dark">Dropdown Options</button>

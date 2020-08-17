@@ -9,7 +9,7 @@ const UserItem = ({ user, jobs }) => {
   return (
     <div className="container">
       <h1>
-        Your <span className="text-primary">{translate('Account')}</span>
+        {translate("Your")} <span className="text-primary">{translate('Account')}</span>
       </h1>
       <p>
         <strong>
@@ -32,19 +32,21 @@ const UserItem = ({ user, jobs }) => {
           <h3 className="text-primary text-left">
             {jobName}
             <span style={{ float: "right" }}>
-              {jobName !== "Human Resources" && (
-                <Link
-                  className="btn btn-success btn-sm"
-                  to={{
-                    pathname: "/QuestionBank",
-                    job: {
-                      jobName: { jobName },
-                    },
-                  }}
-                >
-                  {translate('Fill out the question bank')}
-                </Link>
-              )}
+              {progress === 100 && (
+                <p className="btn btn-success btn-sm">
+                  {translate('Application is in review')}
+                </p>
+              ) || progress > 0 && (<Link
+                className="btn btn-success btn-sm"
+                to={{
+                  pathname: "/QuestionBank",
+                  job: {
+                    jobName: { jobName },
+                  },
+                }}
+              >
+                Start From Question {(progress<100) && progress+1}
+              </Link>)}
             </span>
           </h3>
           <strong>
