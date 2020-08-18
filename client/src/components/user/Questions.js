@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { quizData } from "./quizData";
+import translate from "../../i18n/translate"
 
 export class Questions extends Component {
   state = {
@@ -109,7 +110,7 @@ export class Questions extends Component {
               <br />
               {quizData.map((item, index) => (
                 <li className="ui floating message options" key={index}>
-                  {item.answer}{" "}
+                  {item.answer}
                 </li>
               ))}
             </ul>
@@ -138,7 +139,7 @@ export class Questions extends Component {
           <br />
           {type === "checkbox" && (
             <div>
-              <h4 style={{color:"black", fontWeight:"30px"}}>Select all that applies</h4>
+              <h4 style={{color:"black", fontWeight:"30px"}}>{translate("Select all that applies")}</h4>
               {
                 options.map((option) => (
                   <div onClick={(option) => this.checkAnswer(option)}>
@@ -153,7 +154,7 @@ export class Questions extends Component {
           )}
           {type === "dropdown" && (
             <div className="dropdown">
-              <button className="btn btn-dark">Dropdown Options</button>
+              <button className="btn btn-dark">{translate("Dropdown Options")}</button>
               <div className="dropdown-content">
                 {options.map((option) => (
                   <div onClick={() => this.checkAnswer(option)}>

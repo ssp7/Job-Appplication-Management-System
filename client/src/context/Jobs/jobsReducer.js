@@ -19,18 +19,6 @@ export default (state, action) => {
     case CLEAR_JOBS:
       return {
         ...state,
-      };
-    case CLEAR_JOBS:
-      return {
-        ...state,
-        jobs: null,
-        filtered: null,
-        error: null,
-        current: null,
-      };
-    case CLEAR_JOBS:
-      return {
-        ...state,
         jobs: null,
         filtered: null,
         error: null,

@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
 import translate from "../../i18n/translate";
+
 const Login = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
@@ -17,7 +18,7 @@ const Login = (props) => {
     if (isAuthenticated) {
       props.history.push("/account");
     }
-    if (error == "Invalid Credentials") {
+    if (error === "Invalid Credentials") {
       setAlert(error, "danger");
       clearErrors();
     }

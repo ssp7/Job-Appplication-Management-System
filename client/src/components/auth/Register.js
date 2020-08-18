@@ -1,14 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../context/alert/alertContext";
 import AuthContext from "../../context/auth/authContext";
-import JobsContext from "../../context/Jobs/jobsContext";
 import translate from "../../i18n/translate";
 
 const Register = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
-  const jobsContext = useContext(JobsContext);
-  const { filterJobs, filtered } = jobsContext;
   const { setAlert } = alertContext;
   const { register, error, clearErrors, isAuthenticated } = authContext;
   const [user, setUser] = useState({
@@ -24,7 +21,7 @@ const Register = (props) => {
     if (isAuthenticated) {
       props.history.push("/account");
     }
-    if (error == "User already exists") {
+    if (error === "User already exists") {
       setAlert("User already exists", "danger");
       clearErrors();
     }

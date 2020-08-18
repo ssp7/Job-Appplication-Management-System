@@ -1,35 +1,32 @@
-import React, { Fragment, useContext } from "react";
-import AuthContext from "../../context/auth/authContext";
+import React, { Fragment } from "react";
+import translate from "../../i18n/translate";
 
 const AdminItem = ({ admin, adminStats, table }) => {
   const { name, email } = admin;
-  const authContext = useContext(AuthContext);
-  const { loadUserJobs } = authContext;
-
   return (
     <div className="container">
       <h1>
-        Admin <span className="text-primary">Account</span>
+        {translate('Admin')} <span className="text-primary">{translate('Account')}</span>
       </h1>
       <p>
         <strong>
-          <span className="text-primary">Name: </span>
+          <span className="text-primary">{translate("Name")}: </span>
         </strong>
         <strong>{name}</strong>
       </p>
       <p>
         <strong>
-          <span className="text-primary">Email: </span>
+          <span className="text-primary">{translate("Email Address")}: </span>
         </strong>{" "}
         <strong>{email}</strong>
       </p>
-      <h2>Statistics For Applicants</h2>
+      <h2>{translate("Statistics For Applicants")}</h2>
       <div className="w3-table w3-bordered w3-striped w3-border test w3-hoverable">
         <p>
           <table className="w3-table w3-striped w3-bordered">
             <tr style={{backgroundColor:"primary"}}>
-              <th>Job Title</th>
-              <th>No. of Applicants</th>
+              <th>{translate("Job Title")}</th>
+              <th>{translate("Number of Applicants")}</th>
             </tr>
             {table.map((t) => (
               <tr>
@@ -44,10 +41,10 @@ const AdminItem = ({ admin, adminStats, table }) => {
       {adminStats.map((user) => (
         <Fragment>
           <div className="card bg-light">
-            <strong> Applicant Name: </strong>
+            <strong> {translate("Applicant Name")}: </strong>
             <h2 className="text-primary text-left">{user.name}</h2>
             <strong style={{ float: "right" }}>
-              Progress: -{" "}
+              {translate("Progress")}: -{" "}
               <span
                 style={{ float: "right" }}
                 className={
@@ -62,7 +59,7 @@ const AdminItem = ({ admin, adminStats, table }) => {
                   : +user.progress + " %"}
               </span>
             </strong>
-            <strong> Applicant Name: </strong>{" "}
+            <strong> {translate("Applicant Name")}: </strong>{" "}
             <h4 className="text-primary text-left">{user.jobName}</h4>
           </div>
         </Fragment>

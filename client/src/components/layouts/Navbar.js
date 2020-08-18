@@ -1,7 +1,6 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, { Fragment, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { I18nProvider, LOCALES} from "../../i18n";
 import AuthContext from "../../context/auth/authContext";
 import translate from "../../i18n/translate";
 
@@ -9,7 +8,6 @@ const Navbar = ({ title, icon }) => {
   const authContext = useContext(AuthContext);
 
   const { isAuthenticated, logout, user, admin } = authContext;
-  const [locale, setLocale] = useState(LOCALES.ENGLISH); 
   const onLogout = () => {
     logout();
   };

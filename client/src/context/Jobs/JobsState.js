@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-import uuid from "uuid";
 import axios from "axios";
 import JobsContext from "./jobsContext";
 import jobsReducer from "./jobsReducer";
@@ -8,7 +7,6 @@ import {
   JOBS_ERROR,
   CLEAR_FILTER,
   CLEAR_CURRENT,
-  SET_CURRENT,
   FILTER_JOBS,
   CLEAR_JOBS,
 } from "../Types";
@@ -40,10 +38,6 @@ const JobsState = (props) => {
   };
   const clearJobs = (id) => {
     dispatch({ type: CLEAR_JOBS });
-  };
-  // Set Current Contact
-  const setCurrent = (job) => {
-    dispatch({ type: SET_CURRENT, payload: job });
   };
   // Clear Current Contact
   const clearCurrent = () => {

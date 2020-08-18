@@ -234,7 +234,7 @@ const AuthState = (props) => {
         adminStats: state.adminStats,
         questions: state.questions,
         loading: state.token,
-        error: state.token,
+        error: state.error,
         register,
         loadUser,
         loadUserJobs,

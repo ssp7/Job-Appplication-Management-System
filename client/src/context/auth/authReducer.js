@@ -55,13 +55,6 @@ export default (state, action) => {
         loading: false,
         questions: action.payload,
       };
-    case GET_QUESTIONS:
-      return {
-        ...state,
-        isAuthenticated: true,
-        loading: false,
-        questions: action.payload,
-      };
     case GET_ADMINTABLE:
       return {
         ...state,

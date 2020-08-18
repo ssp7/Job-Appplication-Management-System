@@ -1,11 +1,9 @@
-import React, { Fragment, useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import AuthContext from "../../context/auth/authContext";
 import translate from "../../i18n/translate";
 const UserItem = ({ user, jobs }) => {
   const { name, email, progress } = user;
   const { jobName } = jobs;
-  const authContext = useContext(AuthContext);
   return (
     <div className="container">
       <h1>
@@ -32,11 +30,10 @@ const UserItem = ({ user, jobs }) => {
           <h3 className="text-primary text-left">
             {jobName}
             <span style={{ float: "right" }}>
-              {progress === 100 && (
+              {(progress === 100) ? (
                 <p className="btn btn-success btn-sm">
                   {translate('Application is in review')}
-                </p>
-              ) || progress > 0 && (<Link
+                </p>) : ((progress >= 0 && progress <100)? (<Link
                 className="btn btn-success btn-sm"
                 to={{
                   pathname: "/QuestionBank",
@@ -45,8 +42,9 @@ const UserItem = ({ user, jobs }) => {
                   },
                 }}
               >
-                Start From Question {(progress<100) && progress+1}
-              </Link>)}
+                {translate('Start from', {path: progress+1})}
+              </Link>) : (progress < 0))
+               }
             </span>
           </h3>
           <strong>
@@ -54,7 +52,7 @@ const UserItem = ({ user, jobs }) => {
             <strong>
               <span className="text-primary">
                 {jobName === "Human Resources" || progress === 100
-                  ? "Application is in review"
+                  ? translate("Application is in review")
                   : progress + "%"}
               </span>
             </strong>

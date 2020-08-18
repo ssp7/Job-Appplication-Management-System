@@ -21,8 +21,19 @@ export default {
     'Confirm Password': 'कुंजिका पुष्टि करें',
     'Your': 'तुम्हारी',
     'Fill out the question bank': 'प्रश्न बैंक भरें',
-    'Progress':'प्रगति'
-
-
+    'Progress':'प्रगति',
+    'Statistics For Applicants': 'आवेदकों के लिए सांख्यिकी',
+    'Job Title': 'नौकरी का नाम',
+    'Number of Applicants': 'आवेदकों की संख्या',
+    'Applicant Name': 'आवेदक का नाम',
+    'Application is in review': 'आवेदन की समीक्षा में है',
+    'Start from': 'प्रश्न से प्रारंभ करें {path}',
+    'What does MVC stands for?': 'MVC का क्या अर्थ है?',
+    'What is fullstack?': 'फुलस्टैक क्या है?',
+    'Name Worlds Richest Man?':'दुनिया के सबसे अमीर आदमी का नाम?',
+    'What do you want?' : 'तुम क्या चाहते हो?',
+    'Which of these are Programming Languages?':'इनमें से कौन सी प्रोग्रामिंग लैंग्वेज हैं?',
+    'Dropdown Options' : 'ड्रॉपडाउन विकल्प',
+    'Select all that applies':'लागू होने वाले सभी का चयन करें',
 }
 }

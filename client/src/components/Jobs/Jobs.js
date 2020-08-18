@@ -13,11 +13,15 @@ const Jobs = () => {
     //eslint-disable-next-line
   }, []);
   return (
+    
     <Fragment>
-      {jobs.map((job) => (
+      {jobs !== null && !loading ? 
+      (jobs.map((job) => (
         <JobItem job={job} key={job._id} />
-      ))}
+      ))) : <Spinner />
+      }
     </Fragment>
+     
   );
 };
 

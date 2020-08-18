@@ -1,4 +1,4 @@
-import React, { useContext, Fragment, useEffect, useState } from "react";
+import React, { useContext, Fragment, useEffect } from "react";
 import UserItem from "./UserItem";
 import AuthContext from "../../context/auth/authContext";
 

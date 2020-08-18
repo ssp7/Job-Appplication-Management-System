@@ -1,7 +1,7 @@
 export const quizData = [
   {
     id: 0,
-    question: `What does MVC stands for?`,
+    question: 'What does MVC stands for?',
     type: "mcq",
     options: [
       `Model View Controller`,
@@ -20,7 +20,7 @@ export const quizData = [
   },
   {
     id: 3,
-    question: `Name World's Richest Man?`,
+    question: `Name Worlds Richest Man?`,
     type: "mcq",
     options: [`Jeff Bezo`, `Bill Gates`, `Mark Zuckerberg`],
     answer: `Jeff Bezo`,
@@ -34,7 +34,7 @@ export const quizData = [
   },
   {
     id:5,
-    question: "Which of these are Programming Languages",
+    question: "Which of these are Programming Languages?",
     type: "checkbox",
     options: [`Grails`, `React`, `Groovy`, `Java-Script`],
     answer: [`Groovy`, `Java-Script`],

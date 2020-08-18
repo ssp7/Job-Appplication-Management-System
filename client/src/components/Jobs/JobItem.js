@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import translate from "../../i18n/translate";
 
 const JobItem = ({ job }) => {
-  const { _id, jobName } = job;
+  const {jobName } = job;
 
   return (
     <div className="card bg-light">
