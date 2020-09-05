@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://spykid007:root@job-portal-z8qei.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
+}
